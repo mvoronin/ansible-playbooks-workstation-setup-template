@@ -1,0 +1,22 @@
+
+- name: Set the hostname
+  become: yes
+  hostname: name={{ hostname }}
+  when: hostname is defined
+
+- name: Set the hostname (replace /etc/hosts)
+  become: yes
+  template: src=hosts.j2 dest=/etc/hosts owner=root group=root mode=0644 backup=no
+  when: hostname is defined
+
+
+- name: Generate Locales
+  become: yes
+  with_items: "{{ locale.list }}"
+  locale_gen: name={{ item }} state=present
+  when: locale is defined
+
+- name: Configure Locales
+  become: yes
+  template: src=locale.j2 dest=/etc/default/locale owner=root group=root mode=0644 backup=yes
+  when: locale is defined

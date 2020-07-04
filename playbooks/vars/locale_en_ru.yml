@@ -1,0 +1,17 @@
+locale:
+  list: ["en_US.UTF-8", "ru_RU.UTF-8"]  # these locales will be generated
+  LANG: "en_US.UTF-8"
+  # LANGUAGE:
+  CTYPE: "en_US.UTF-8"
+  NUMERIC: "ru_RU.UTF-8"
+  TIME: "ru_RU.UTF-8"
+  COLLATE: "en_US.UTF-8"
+  MONETARY: "ru_RU.UTF-8"
+  MESSAGES: "en_US.UTF-8"
+  PAPER: "ru_RU.UTF-8"
+  NAME: "ru_RU.UTF-8"
+  ADDRESS: "ru_RU.UTF-8"
+  TELEPHONE: "ru_RU.UTF-8"
+  MEASUREMENT: "ru_RU.UTF-8"
+  IDENTIFICATION: "ru_RU.UTF-8"
+  # ALL:

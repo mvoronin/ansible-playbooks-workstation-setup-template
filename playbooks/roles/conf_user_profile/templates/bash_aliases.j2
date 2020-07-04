@@ -1,0 +1,11 @@
+# To clear all the history and screen
+alias hcl='history -c; clear'
+
+# List paths
+alias path='echo -e ${PATH//:/\\n}'
+
+# System update
+apt-up() {
+   sudo apt-get update
+   sudo apt-get dist-upgrade
+}

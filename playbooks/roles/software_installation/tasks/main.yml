@@ -1,0 +1,116 @@
+- assert: { that: ansible_distribution == 'Ubuntu' }
+- assert: { that: "ansible_distribution_version == '20.04'" }
+
+- name: apt - Install packages for general use cases
+  become: yes
+  apt:
+    name: "{{ packages }}"
+    update_cache: yes
+    cache_valid_time: 3600
+    state: latest
+  vars:
+    packages:
+      - cryptsetup   # Volumes Encryption
+      - xterm        # Good Terminal Application
+      - aptitude     # Software Manager
+      - htop         # Hardware Monitoring
+      - screen
+      - mc           # TUI File Manager
+      - p7zip-full
+      - p7zip-rar
+      - keepassx     # Passwords Manager
+      - gparted      # Partitions Manager
+      - thunderbird  # EMail Client
+      - filezilla    # FTP Client
+      # - transmission-gtk  # Torrents Client
+      # - vlc          # Media Player
+      - mplayer      # Media Player
+      - ffmpegthumbnailer  # This is used for generating thumbnails of video files
+      - nmap
+      - netcat
+      - wireshark
+      - virt-manager # Virtual Machines Manager
+  tags:
+    - apt-install-software-general
+
+- name: snap - Install packages for general use
+  become: yes
+  snap:
+    name:
+      - telegram-desktop
+  tags:
+    - snap-install-software-general
+
+- name: snap - Install snap-packages with classic confinement mode for general use
+  become: yes
+  snap:
+    classic: yes
+    name:
+      - slack
+  tags:
+    - snap-install-software-general
+
+- name: apt - Install fonts
+  become: yes
+  apt:
+    name: "{{ packages }}"
+    state: latest
+  vars:
+    packages:
+      - xfonts-cyrillic
+      - fonts-terminus
+      - xfonts-terminus
+      - xfonts-terminus-dos
+      - xfonts-terminus-oblique
+  tags:
+    - apt-install-software-fonts
+
+- name: apt - Install software development tools
+  become: yes
+  apt:
+    name: "{{ packages }}"
+    state: latest
+  vars:
+    packages:
+      - emacs
+      - vim
+      - git
+      - postgresql-client
+      - build-essential
+  tags:
+    - apt-install-software-dev-tools
+
+- name: apt - Install Python tools
+  become: yes
+  apt:
+    name: "{{ packages }}"
+    state: latest
+  vars:
+    packages:
+      - python3-venv
+      - python3-wheel
+  tags:
+    - apt-install-software-dev-python
+
+- name: apt - Install requirements for compiling Python from sources
+  become: yes
+  apt:
+    name: "{{ packages }}"
+    state: latest
+  vars:
+    packages:
+      - python3-dev
+      #- zlib1g-dev      # dependency of the python-dev, compression support for Python
+      - libreadline-dev  # library that allow users to edit command lines as they are typed in
+      - libssl-dev
+      #- libncurses5-dev libncursesw5-dev
+      - postgresql-server-dev-all
+      - libsqlite3-dev
+      - libgdbm-dev
+      - libdb5.3-dev
+      #- libbz2-dev liblzma-dev
+      - libexpat1-dev
+      - libffi-dev  # libffi is a foreign function interface library.
+      - uuid-dev
+  tags:
+    - apt-install-software-dev-python-sources

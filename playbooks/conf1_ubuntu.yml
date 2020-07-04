@@ -1,0 +1,27 @@
+---
+
+
+- name: Ubuntu Workstation
+  hosts: localhost
+  connection: local
+
+  vars:
+    node_python_version: 3  # version of Python on target nodes
+
+    locale:
+      en_US.utf8
+      ru_RU.utf8
+
+    gitconfig:
+      name: Firstname Lastname
+      email: email@domain.com
+
+  vars_files:
+    - vars/locale_en_ru.yml
+
+  roles:
+    - general
+    - software_installation
+    - conf_keyboard
+    - conf_user_profile
+    - conf_netfilter

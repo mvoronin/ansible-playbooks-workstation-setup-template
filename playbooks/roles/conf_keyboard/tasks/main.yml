@@ -1,0 +1,26 @@
+
+- name: Install requirements (general)
+  become: yes
+  apt:
+    name: "{{ packages }}"
+    update_cache: yes
+    cache_valid_time: 3600
+    state: latest
+  vars:
+    packages:
+      - python3-psutil
+
+
+- name: Configure available keyboard layouts in Cinnamon
+  dconf:
+    key: "/org/gnome/desktop/input-sources/xkb-options"
+    value: "['grp_led:scroll', 'ctrl:swapcaps', 'grp:rshift_toggle', 'grp:rwin_toggle']"
+    state: present
+
+- name: Configure XKB (/etc/default/keyboard)
+  become: yes
+  lineinfile:
+    path: /etc/default/keyboard
+    regexp: '^XKBOPTIONS='
+    line: XKBOPTIONS="grp_led:scroll,ctrl:swapcaps,grp:rshift_toggle,grp:rwin_toggle"
+    backup: no

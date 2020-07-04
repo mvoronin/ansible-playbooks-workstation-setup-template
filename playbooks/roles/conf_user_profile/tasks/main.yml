@@ -1,0 +1,25 @@
+
+- name: Configure BASH aliases
+  template:
+    src: bash_aliases.j2
+    dest: "{{ ansible_env.HOME }}/.bash_aliases"
+    mode: 0644
+
+
+- name: Configure git
+  template:
+    src: gitconfig.j2
+    dest: "{{ ansible_env.HOME }}/.gitconfig"
+    mode: 0640
+
+- name: Configure XTerm
+  template:
+    src: XTerm.j2
+    dest: "{{ ansible_env.HOME }}/XTerm"
+    mode: 0640
+
+- name: Configure Emacs
+  template:
+    src: emacs.j2
+    dest: "{{ ansible_env.HOME }}/.emacs"
+    mode: 0640

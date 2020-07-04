@@ -1,0 +1,34 @@
+LANG="{{ locale.LANG|default("en_US.UTF-8") }}"
+{% if locale.LANGUAGE is defined %}
+LANGUAGE="{{ locale.LANGUAGE }}"
+{% endif %}
+{% if locale.NUMERIC is defined %}
+LC_NUMERIC="{{ locale.NUMERIC }}"
+{% endif %}
+{% if locale.TIME is defined %}
+LC_TIME="{{ locale.TIME }}"
+{% endif %}
+{% if locale.MONETARY is defined %}
+LC_MONETARY="{{ locale.MONETARY }}"
+{% endif %}
+{% if locale.PAPER is defined %}
+LC_PAPER="{{ locale.PAPER }}"
+{% endif %}
+{% if locale.NAME is defined %}
+LC_NAME="{{ locale.NAME }}"
+{% endif %}
+{% if locale.ADDRESS is defined %}
+LC_ADDRESS="{{ locale.ADDRESS }}"
+{% endif %}
+{% if locale.TELEPHONE is defined %}
+LC_TELEPHONE="{{ locale.TELEPHONE }}"
+{% endif %}
+{% if locale.MEASUREMENT is defined %}
+LC_MEASUREMENT="{{ locale.MEASUREMENT }}"
+{% endif %}
+{% if locale.IDENTIFICATION is defined %}
+LC_IDENTIFICATION="{{ locale.IDENTIFICATION }}"
+{% endif %}
+{% if locale.ALL is defined %}
+LC_ALL="{{ locale.ALL }}"
+{% endif %}
